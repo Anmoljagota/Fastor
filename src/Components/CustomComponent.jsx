@@ -61,7 +61,9 @@ const CustomComponent = ({
         ))}
       </Flex>
       {error == "Number should be atleast 10 digit" && (
-        <span style={{color:"red",fontSize:"12px"}}>Number should be atleast 10 digit</span>
+        <span style={{ color: "red", fontSize: "12px" }}>
+          Number should be atleast 10 digit
+        </span>
       )}
       {/* <Link to={length > 1 ? null : "login"}> */}
       <Button
