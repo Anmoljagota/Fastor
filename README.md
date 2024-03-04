@@ -9,17 +9,15 @@ Restaurant App is a web application that provides a login system for users to au
 - **Restaurant Details**: Show detailed information about each restaurant, including images.
 - **Image Superimposing**: Superimpose the Fastor logo onto the center of each restaurant image.
 
-
-
 ## Installation
 
 1. Clone the repository:
 
    ```bash
    git clone https://github.com/Anmoljagota/Fastor.git
+   ```
 
- 
- ## Technologies Used
+## Technologies Used
 
 - React.js
 - Chakra UI
@@ -28,6 +26,9 @@ Restaurant App is a web application that provides a login system for users to au
 - React Icons
 - Multi Carousel
 
-
 ## Images
-<img src="">
+
+<img src="https://github.com/Anmoljagota/Fastor/blob/main/public/fastor1.png?raw=true"><br/><br/>
+<img src="https://github.com/Anmoljagota/Fastor/blob/main/public/fastor2.png?raw=true"><br/><br/>
+<img src="https://github.com/Anmoljagota/Fastor/blob/main/public/fastor3.png?raw=true"><br/><br/>
+<img src="https://github.com/Anmoljagota/Fastor/blob/main/public/fastor4.png?raw=true"><br/><br/>
