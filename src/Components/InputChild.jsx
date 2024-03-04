@@ -14,7 +14,7 @@ const InputChild = forwardRef(
     };
     return (
       <Input
-        placeholder={length <= 1 && "Enter your email"}
+        placeholder={length <= 1 && "Enter your mobile number"}
         border={"1px solid #DADADA"}
         background={"#F7F8F9"}
         fontWeight={"500"}
@@ -26,10 +26,9 @@ const InputChild = forwardRef(
         p={"1.8rem 1rem"}
         maxlength={maxlength}
         ref={ref}
-        //   onChange={handlecheck}
-        onKeyUp={handleKeyup}
+        onChange={handlecheck}
+        onKeyUp={handlebackspace && handleKeyup}
         onPaste={handlePaste}
-        //   onPaste={handlePaste}
       />
     );
   }

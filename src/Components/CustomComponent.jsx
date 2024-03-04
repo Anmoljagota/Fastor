@@ -17,8 +17,8 @@ const CustomComponent = ({
   inputref,
   handlebackspace,
   Checklogin,
+  error,
 }) => {
-  console.log("current data", currentdata);
   return (
     <Flex flexDirection={"column"} gap={"2rem"} m={"auto"} p={15}>
       {/* <VStack border={"1px solid red"} textAlign={"left"} spacing={0}> */}
@@ -53,7 +53,6 @@ const CustomComponent = ({
             ref={
               length > 1
                 ? (data) => {
-                    console.log("i am data", data);
                     inputref.current[index] = data;
                   }
                 : null
@@ -61,21 +60,25 @@ const CustomComponent = ({
           />
         ))}
       </Flex>
-      <Link to={length > 1 ? null : "login"}>
-        <Button
-          bg={"#FF6D6A"}
-          height={"56px"}
-          w={"100%"}
-          color={"#FFFFFF"}
-          fontWeight={"500"}
-          borderStyle={"none"}
-          fontSize={"1.5rem"}
-          borderRadius={"0.8rem"}
-          onClick={btnText === "Verify" ? Checklogin : ""}
-        >
-          {btnText}
-        </Button>
-      </Link>
+      {error == "Number should be atleast 10 digit" && (
+        <span style={{color:"red",fontSize:"12px"}}>Number should be atleast 10 digit</span>
+      )}
+      {/* <Link to={length > 1 ? null : "login"}> */}
+      <Button
+        bg={"#FF6D6A"}
+        height={"56px"}
+        w={"100%"}
+        color={"#FFFFFF"}
+        fontWeight={"500"}
+        borderStyle={"none"}
+        fontSize={"1.5rem"}
+        borderRadius={"0.8rem"}
+        onClick={Checklogin}
+        cursor={"pointer"}
+      >
+        {btnText}
+      </Button>
+      {/* </Link> */}
       {length > 1 && (
         <Text
           textAlign={"center"}
@@ -85,7 +88,8 @@ const CustomComponent = ({
           fontSize={"15px"}
           letterSpacing={"1%"}
         >
-          Didn’t received code? Resend
+          Didn’t received code?{" "}
+          <span style={{ color: "#3e56b3", cursor: "pointer" }}>Resend</span>
         </Text>
       )}
     </Flex>

@@ -1,7 +1,8 @@
-import { Box, Flex, Image, Text, VStack } from "@chakra-ui/react";
+import { Box, Flex, HStack, Image, Text, VStack } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Offers from "./Offers";
 import { CiStar } from "react-icons/ci";
 
 const SingleProductPage = () => {
@@ -26,15 +27,16 @@ const SingleProductPage = () => {
   useEffect(() => {
     JSON.parse(localStorage.getItem("token")) && Getdata();
   }, []);
+
   return (
     <div>
       {data.length > 0 &&
-        data.map((ele) => {
+        data.map((ele, index) => {
           return (
             ele.restaurant_id == id && (
-              <Box p={5}>
+              <Box p={5} key={index} position={"relative"}>
                 <Image height={"350px"} w={"100%"} src={ele.images[0].url} />
-                <Box p={15}>
+                <Box p={15} position={"absolute"} bottom={-170} bg={"white"}  borderRadius={"2rem"}>
                   <Flex justifyContent={"space-between"}>
                     <VStack spacing={0} align={"start"}>
                       <Box
@@ -55,6 +57,7 @@ const SingleProductPage = () => {
                         {ele.location.city_name}
                       </Box>
                     </VStack>
+
                     <Flex
                       justifyContent={"center"}
                       gap={"0.5rem"}
@@ -74,13 +77,11 @@ const SingleProductPage = () => {
                       </span>
                     </Flex>
                   </Flex>
-                  <Text
-                    fontWeight={"600"}
-                    fontSize={"12px"}
-                    lineHeight={"14.4px"}
-                    color={"#D39171"}
-                  >
-                    4 Offers Trending
+                  <Offers />
+                  <Text fontSize={"14px"} fontWeight={"500"} color={"#515151"}>
+                    Our delicate vanilla cake swirled with chocolate and filled
+                    with mocha chocolate chip cream and a layer of dark
+                    chocolate ganache
                   </Text>
                 </Box>
               </Box>

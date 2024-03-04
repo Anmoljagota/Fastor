@@ -2,7 +2,9 @@ import React from "react";
 import { Flex, HStack, Image, VStack, Box } from "@chakra-ui/react";
 import { FaStar } from "react-icons/fa";
 import { BiDollar } from "react-icons/bi";
+import Offers from "./Offers";
 const ProductItems = ({ items }) => {
+    console.log("chachaaaa");
   return (
     <Flex justifyContent={"space-between"} border={"1px  solid red"}>
       <Image w={"122px"} src={items.images[0].url} />
@@ -11,6 +13,7 @@ const ProductItems = ({ items }) => {
         <Box fontSize={"14px"}>
           Cakes, pastres, Pastas, Connouant Place, New Delhi
         </Box>
+        <Offers ele={items.rating.restaurant_avg_rating} />
         <Flex mt={"0.5rem"} justifyContent={"space-between"}>
           <VStack spacing={"0"}>
             <HStack mt={"0"}>

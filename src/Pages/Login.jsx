@@ -1,30 +1,42 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import CustomComponent from "../Components/CustomComponent";
 import { Flex } from "@chakra-ui/react";
 import axios from "axios";
-
+import { useNavigate } from "react-router-dom";
 const Login = () => {
+  const navigate = useNavigate();
   // const [checklog, setChecklog] = useState();
   const [token, setToken] = useState("");
+  const inputref = useRef([]);
 
   const Checklogin = async () => {
-    console.log("hlo  logi data");
-    try {
-      const data = await axios.post(
-        "https://staging.fastor.in/v1/pwa/user/login",
-        {
-          phone: "1234567899",
-          otp: "123456",
-          dial_code: "+91",
+    if (
+      inputref.current[0].value == "1" &&
+      inputref.current[1].value == "2" &&
+      inputref.current[2].value == "3" &&
+      inputref.current[3].value == "4" &&
+      inputref.current[4].value == "5" &&
+      inputref.current[5].value == "6"
+    ) {
+      try {
+        const data = await axios.post(
+          "https://staging.fastor.in/v1/pwa/user/login",
+          {
+            phone: "1234567899",
+            otp: "123456",
+            dial_code: "+91",
+          }
+        );
+
+        if (data.data.data.token) {
+          localStorage.setItem("token", JSON.stringify(data.data.data.token));
         }
-      );
-      console.log("i am data", data.data.data.token);
-      if (data.data.data.token) {
-        localStorage.setItem("token",JSON.stringify(data.data.data.token));
+        navigate("/restaurants");
+      } catch (err) {
+        console.log(err);
       }
-      setToken(data);
-    } catch (err) {
-      console.log(err);
+    } else {
+      alert("wrong pin");
     }
   };
 
@@ -33,8 +45,7 @@ const Login = () => {
   const [currentdata] = useState(new Array(length).fill("-"));
   const [apply, setApply] = useState("");
   const [storedata] = useState(new Array(length).fill(""));
-  const inputref = useRef([]);
-  console.log("i  am  input data", inputref);
+
   const handlecheck = (e, index) => {
     console.log("i am index", index);
     console.log(e, index);
@@ -53,6 +64,7 @@ const Login = () => {
 
     setApply(storedata.join(""));
   }
+
   function handlePaste(e) {
     const data = e.clipboardData
       .getData("text")

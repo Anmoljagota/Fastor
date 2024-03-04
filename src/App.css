@@ -39,3 +39,20 @@ html {
 :root {
   --primary-color: #838ba1; /* Define your color here */
 }
+
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Show 3 items by default */
+  gap: 4rem;
+
+  /* Medium screen: 2 items */
+  @media screen and (max-width: 868px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Small screen: 1 item */
+  @media screen and (max-width: 580px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
